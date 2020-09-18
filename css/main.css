@@ -659,7 +659,7 @@ input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
   .picture:nth-child(2),
   .picture:nth-child(4),
   .picture:nth-child(6) {
-    /*margin-left: 11px;*/
+    margin-left: 11px;
   }
 
   .picture:nth-child(2),
@@ -862,3 +862,20 @@ input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
 .footer-social-item-vk {
   background-position: -84px 0;
 }
+
+.comment{
+  margin: 0  auto;
+  margin-top: 200px;
+
+  display: flex;
+  align-items: center;
+}
+.comment__author-img-name-wrapper{
+  margin-right: 10px;
+}
+
+.comment__author-img, .comment__author-name{
+  display: block;
+  text-align: center;
+}
+

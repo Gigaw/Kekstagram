@@ -5,7 +5,7 @@
     var photosLikes = [];
     var photosComments = [];
     var photosDescriptions = [];
-    var fragment = document.createDocumentFragment();
+    
     var pictureTemplate = document.querySelector('#picture-template').content.querySelector('.picture');
     var picturesContainer = document.querySelector('.pictures');
 
@@ -49,25 +49,33 @@
 
 
     //Функция генерации фотографий
-    function generatePhoto(template, photo, likes, comments){
+    function generatePhoto(template, information){
         var picture = template.cloneNode(true);
-    //   var comment;
-        picture.querySelector('img').src = photo;
-        picture.querySelector('.picture-likes').textContent = likes ; 
-        // for(var i = 0; i < comments.length; i++){
-        //     comment += comments[i] + ' ';
-        // }
-        picture.querySelector('.picture-comments').textContent = comments;
+        picture.querySelector('img').src = information.url;
+        // picture.querySelector('.picture-likes').textContent = information.likes;
+        // picture.querySelector('.picture-comments').appendChild(createComments(information.comments));
 
         return picture ;
     }
 
-    for(var i = 0; i < photosUrls.length; i++){
-        var newPicture = generatePhoto(pictureTemplate, photosUrls[i], photosLikes[i], photosComments[i]);
-        fragment.appendChild(newPicture);
+    
+
+
+
+    var addImages = function(images){
+        var fragment = document.createDocumentFragment();
+        // for(var i = 0; i < images.length; i++){
+        //     var newPicture = generatePhoto(pictureTemplate, photosUrls[i], photosLikes[i], photosComments[i]);
+        //     fragment.appendChild(newPicture);
+        // }
+        images.forEach(function(el){
+            var newPicture = generatePhoto(pictureTemplate, el);
+            fragment.appendChild(newPicture);
+        })
+        picturesContainer.appendChild(fragment);
     }
 
+    window.backend.load(addImages, window.backend.onError);
 
-    picturesContainer.appendChild(fragment);
 
 }())
