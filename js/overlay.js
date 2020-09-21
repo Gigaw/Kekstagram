@@ -1,17 +1,7 @@
 'use strict';
 (function(){
-    var overlay = document.querySelector('.gallery-overlay');
-    var currentPicture = document.querySelector('.picture');
-    var keksPictures = document.querySelectorAll('.pictures .picture');
     var galleryOverlayClose = document.querySelector('.gallery-overlay-close');
-
-    // window.backend.load(function(response){
-    //     picturesInfo = response;
-    //     console.log(picturesInfo);
-    // }, window.backend.onError);
-    // console.log(picturesInfo);
    
-
     window.overlay = {
         overlayOpen : function(){
             window.overlay.overlayElement.classList.remove('hidden');

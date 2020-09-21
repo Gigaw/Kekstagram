@@ -49,11 +49,11 @@
   levelPin.addEventListener('mousedown', function(evt){
       evt.preventDefault();
 
-      startCoords = {
+      var startCoords = {
           x: evt.clientX
       }
 
-      onMouseMove = function(moveEvt){
+      var onMouseMove = function(moveEvt){
           moveEvt.preventDefault();
           var maxWidth = effectLevel.offsetWidth;
           var shift = {
@@ -74,7 +74,7 @@
           
       }
 
-      onMouseUp = function(upEvt){
+      var onMouseUp = function(upEvt){
           upEvt.preventDefault();
 
           document.removeEventListener('mousemove', onMouseMove);

@@ -286,6 +286,7 @@ body {
 
 .effect-image-preview {
   vertical-align: middle;
+  max-width: 543px;
 }
 
 .upload-effect-controls input[type=radio] {
