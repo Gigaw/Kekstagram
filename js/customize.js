@@ -1,3 +1,4 @@
+'use strict';
 (function(){
   //Загрузка и фотографии и открытие редактора
   var uploadFile = document.querySelector('#upload-file');
@@ -84,7 +85,7 @@
       document.addEventListener('mouseup', onMouseUp);
   })
 
-  makeEffect = function(effect,  depth){ //Задает эффект по наименованию и глубине
+  var makeEffect = function(effect,  depth){ //Задает эффект по наименованию и глубине
       switch(effect) {
           case 'chrome':
               return 'filter: grayscale(' + depth + ')';
@@ -108,7 +109,7 @@
         }
   }
 
-  giveEffectName = function(){ // Узнает имя выбранного эффекта
+  var giveEffectName = function(){ // Узнает имя выбранного эффекта
       for(var i = 0; i < effectsButtons.length; i++){
           var effect = effectsButtons[i];
           if(effect.checked){

@@ -1,3 +1,5 @@
+'use strict';
+
 (function(){
     var form = document.querySelector('.upload-form');
     var uploadOverlay = document.querySelector('.upload-overlay');

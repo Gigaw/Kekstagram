@@ -24,9 +24,6 @@ body {
   color: #ffe753;
 }
 
-.hidden {
-  display: none;
-}
 
 /* Фильтры */
 
@@ -744,6 +741,7 @@ input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
 
 .gallery-overlay-controls-comments {
   margin-right: 150px;
+  margin-bottom: 20px;
 
   text-align: left;
 }
@@ -863,7 +861,7 @@ input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
   background-position: -84px 0;
 }
 
-.comment{
+/* .comment{
   margin: 0  auto;
   margin-top: 200px;
 
@@ -877,5 +875,33 @@ input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
 .comment__author-img, .comment__author-name{
   display: block;
   text-align: center;
+} */
+.gallery-overlay-comments{
+  max-width: 410px;
+  margin: 0 auto;
+  
+  color: black;
+}
+.comment{
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  
+}
+.comment:last-child{
+  border-bottom: none;
+}
+.comment__author-img-name-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.comment__author-message{
+  text-align: start;
+  padding-left: 20px;
+  padding-top: 5px;
 }
 
+.hidden {
+  display: none;
+}

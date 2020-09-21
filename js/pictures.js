@@ -1,81 +1,38 @@
+'use strict';
 (function(){
-    //переменные 
-    var photosUrls = [];
-    const photosNumber = 25;
-    var photosLikes = [];
-    var photosComments = [];
-    var photosDescriptions = [];
-    
     var pictureTemplate = document.querySelector('#picture-template').content.querySelector('.picture');
     var picturesContainer = document.querySelector('.pictures');
-
-    var comments = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию,\
-    хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка\
-    случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся\
-    на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.' , 'Лица\
-    у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
-
-    var descriptions = ['Тестим новую камеру!', 'Затусили с друзьями на море', 'Как же круто тут кормят' , 'Отдыхаем...',
-    'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......', 'Вот это тачка!'];
-
-    function randomInteger(min, max) {
-        // получить случайное число от (min-0.5) до (max+0.5)
-        let rand = min - 0.5 + Math.random() * (max - min + 1);
-        return Math.round(rand);
-    }
-
-    //Заполнение массива изображений
-    for(var i = 1; i <= photosNumber; i ++ ){
-        photosUrls.push('photos/' + i +'.jpg');
-    }
-    //Заполнение массива лайков
-    for(var i = 0; i < photosNumber.length; i++){
-        photosLikes.push(randomInteger(15, 200));
-        close.log('привет')
-    }
-    //Заполнение массива комментариев 
-    for(var i = 0; i < photosNumber.length; i++){
-        var commentsNumber = randomInteger(1, 2); //Рандомное количество комментариев
-        for(var j = 0; j < commentsNumber; j++){
-            var comment = comments[randomInteger(0, comments.length -1)];
-            photosComments.push(comment);
-        }
-    }
-    //Заполнение массива описания фотографий
-    for(var i = 0; i< photosUrls.length; i++){
-        var description = descriptions[randomInteger(0, descriptions.length -1)];
-        photosDescriptions.push(description);
-    }
-
 
     //Функция генерации фотографий
     function generatePhoto(template, information){
         var picture = template.cloneNode(true);
         picture.querySelector('img').src = information.url;
-        // picture.querySelector('.picture-likes').textContent = information.likes;
-        // picture.querySelector('.picture-comments').appendChild(createComments(information.comments));
-
         return picture ;
     }
 
-    
-
-
-
-    var addImages = function(images){
+    window.addImages = function(images){
         var fragment = document.createDocumentFragment();
-        // for(var i = 0; i < images.length; i++){
-        //     var newPicture = generatePhoto(pictureTemplate, photosUrls[i], photosLikes[i], photosComments[i]);
-        //     fragment.appendChild(newPicture);
-        // }
+
         images.forEach(function(el){
             var newPicture = generatePhoto(pictureTemplate, el);
             fragment.appendChild(newPicture);
         })
+
         picturesContainer.appendChild(fragment);
+
+        var keksPictures = document.querySelectorAll('.pictures .picture');
+        for(let i = 0; i< keksPictures.length; i++){
+            keksPictures[i].addEventListener('click', function(evt){
+            evt.preventDefault();
+            window.showBigPicture(evt.currentTarget, images);
+            })
+        }
+
+        window.pictures = images;
     }
 
-    window.backend.load(addImages, window.backend.onError);
+    window.backend.load(window.addImages, window.backend.onError);
+
 
 
 }())
